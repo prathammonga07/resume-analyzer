@@ -48,11 +48,11 @@ def calculate_ats(found_skills, total_skills):
 def get_contact_info(text):
     # basic regex, wont catch every format but good enough
     email = re.findall(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}", text)
-    phone = re.findall(r"(\+?\d{1,3}[\s-]?)?\d{10}", text)
+    phone = re.findall(r"(?:\+?\d{1,3}[\s-]?)?\d{10}", text)
     linkedin = re.findall(r"linkedin\.com/in/[a-zA-Z0-9\-_/]+", text)
 
     email = email[0] if email else "Not found"
-    phone = "".join(phone[0]).strip() if phone else "Not found"
+    phone = phone[0].strip() if phone else "Not found"
     linkedin = linkedin[0] if linkedin else "Not found"
 
     return email, phone, linkedin
